@@ -20,17 +20,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.loginButton.layer setCornerRadius:4.0];
+    [self.signinButton.layer setCornerRadius:4.0];
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tapGestureRecognizer];
 }
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+- (void)dismissKeyboard {
+    [self.login resignFirstResponder];
+    [self.password resignFirstResponder];
 }
 
 #pragma mark - Actions
 
-- (IBAction)signinButtonPressed:(UIButton *)sender {
-}
 - (IBAction)loginButtonPressed:(UIButton *)sender {
 }
 

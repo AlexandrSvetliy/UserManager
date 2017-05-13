@@ -16,6 +16,7 @@
 		A8BB597A1EC7667300E135FB /* UserManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BB59791EC7667300E135FB /* UserManagerTests.m */; };
 		A8BB59851EC7667300E135FB /* UserManagerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BB59841EC7667300E135FB /* UserManagerUITests.m */; };
 		A8BB59941EC766FF00E135FB /* ASStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BB59931EC766FF00E135FB /* ASStorage.m */; };
+		A8BB59971EC7A2F300E135FB /* ASRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BB59961EC7A2F300E135FB /* ASRegistrationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		A8BB59861EC7667300E135FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8BB59921EC766FF00E135FB /* ASStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASStorage.h; sourceTree = "<group>"; };
 		A8BB59931EC766FF00E135FB /* ASStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASStorage.m; sourceTree = "<group>"; };
+		A8BB59951EC7A2F300E135FB /* ASRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASRegistrationViewController.h; sourceTree = "<group>"; };
+		A8BB59961EC7A2F300E135FB /* ASRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASRegistrationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 				A8BB595F1EC7667300E135FB /* Supporting Files */,
 				A8BB59921EC766FF00E135FB /* ASStorage.h */,
 				A8BB59931EC766FF00E135FB /* ASStorage.m */,
+				A8BB59951EC7A2F300E135FB /* ASRegistrationViewController.h */,
+				A8BB59961EC7A2F300E135FB /* ASRegistrationViewController.m */,
 			);
 			path = UserManager;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 				A8BB59641EC7667300E135FB /* AppDelegate.m in Sources */,
 				A8BB59611EC7667300E135FB /* main.m in Sources */,
 				A8BB59941EC766FF00E135FB /* ASStorage.m in Sources */,
+				A8BB59971EC7A2F300E135FB /* ASRegistrationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +529,7 @@
 				A8BB598B1EC7667300E135FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A8BB598C1EC7667300E135FB /* Build configuration list for PBXNativeTarget "UserManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +538,7 @@
 				A8BB598E1EC7667300E135FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A8BB598F1EC7667300E135FB /* Build configuration list for PBXNativeTarget "UserManagerUITests" */ = {
 			isa = XCConfigurationList;
@@ -539,6 +547,7 @@
 				A8BB59911EC7667300E135FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
