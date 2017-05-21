@@ -17,6 +17,11 @@
 		A8BB59851EC7667300E135FB /* UserManagerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BB59841EC7667300E135FB /* UserManagerUITests.m */; };
 		A8BB59941EC766FF00E135FB /* ASStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BB59931EC766FF00E135FB /* ASStorage.m */; };
 		A8BB59971EC7A2F300E135FB /* ASRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BB59961EC7A2F300E135FB /* ASRegistrationViewController.m */; };
+		A8F9D4D21EC8C5A0005F3C92 /* ASNibBasedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F9D4C91EC8C5A0005F3C92 /* ASNibBasedView.m */; };
+		A8F9D4D31EC8C5A0005F3C92 /* BirthdayPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F9D4CC1EC8C5A0005F3C92 /* BirthdayPickerView.m */; };
+		A8F9D4D41EC8C5A0005F3C92 /* BirthdayPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8F9D4CD1EC8C5A0005F3C92 /* BirthdayPickerView.xib */; };
+		A8F9D4D51EC8C5A0005F3C92 /* CountryPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F9D4D01EC8C5A0005F3C92 /* CountryPickerView.m */; };
+		A8F9D4D61EC8C5A0005F3C92 /* CountryPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8F9D4D11EC8C5A0005F3C92 /* CountryPickerView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +62,14 @@
 		A8BB59931EC766FF00E135FB /* ASStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASStorage.m; sourceTree = "<group>"; };
 		A8BB59951EC7A2F300E135FB /* ASRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASRegistrationViewController.h; sourceTree = "<group>"; };
 		A8BB59961EC7A2F300E135FB /* ASRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASRegistrationViewController.m; sourceTree = "<group>"; };
+		A8F9D4C81EC8C5A0005F3C92 /* ASNibBasedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASNibBasedView.h; sourceTree = "<group>"; };
+		A8F9D4C91EC8C5A0005F3C92 /* ASNibBasedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASNibBasedView.m; sourceTree = "<group>"; };
+		A8F9D4CB1EC8C5A0005F3C92 /* BirthdayPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirthdayPickerView.h; sourceTree = "<group>"; };
+		A8F9D4CC1EC8C5A0005F3C92 /* BirthdayPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirthdayPickerView.m; sourceTree = "<group>"; };
+		A8F9D4CD1EC8C5A0005F3C92 /* BirthdayPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BirthdayPickerView.xib; sourceTree = "<group>"; };
+		A8F9D4CF1EC8C5A0005F3C92 /* CountryPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryPickerView.h; sourceTree = "<group>"; };
+		A8F9D4D01EC8C5A0005F3C92 /* CountryPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryPickerView.m; sourceTree = "<group>"; };
+		A8F9D4D11EC8C5A0005F3C92 /* CountryPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountryPickerView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +128,7 @@
 				A8BB596B1EC7667300E135FB /* Assets.xcassets */,
 				A8BB596D1EC7667300E135FB /* LaunchScreen.storyboard */,
 				A8BB59701EC7667300E135FB /* Info.plist */,
+				A8F9D4C71EC8C5A0005F3C92 /* Pickers */,
 				A8BB595F1EC7667300E135FB /* Supporting Files */,
 				A8BB59921EC766FF00E135FB /* ASStorage.h */,
 				A8BB59931EC766FF00E135FB /* ASStorage.m */,
@@ -148,6 +162,37 @@
 				A8BB59861EC7667300E135FB /* Info.plist */,
 			);
 			path = UserManagerUITests;
+			sourceTree = "<group>";
+		};
+		A8F9D4C71EC8C5A0005F3C92 /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				A8F9D4C81EC8C5A0005F3C92 /* ASNibBasedView.h */,
+				A8F9D4C91EC8C5A0005F3C92 /* ASNibBasedView.m */,
+				A8F9D4CA1EC8C5A0005F3C92 /* BirthdayPickerView */,
+				A8F9D4CE1EC8C5A0005F3C92 /* CountryPickerView */,
+			);
+			path = Pickers;
+			sourceTree = "<group>";
+		};
+		A8F9D4CA1EC8C5A0005F3C92 /* BirthdayPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				A8F9D4CB1EC8C5A0005F3C92 /* BirthdayPickerView.h */,
+				A8F9D4CC1EC8C5A0005F3C92 /* BirthdayPickerView.m */,
+				A8F9D4CD1EC8C5A0005F3C92 /* BirthdayPickerView.xib */,
+			);
+			path = BirthdayPickerView;
+			sourceTree = "<group>";
+		};
+		A8F9D4CE1EC8C5A0005F3C92 /* CountryPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				A8F9D4CF1EC8C5A0005F3C92 /* CountryPickerView.h */,
+				A8F9D4D01EC8C5A0005F3C92 /* CountryPickerView.m */,
+				A8F9D4D11EC8C5A0005F3C92 /* CountryPickerView.xib */,
+			);
+			path = CountryPickerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +308,8 @@
 				A8BB596F1EC7667300E135FB /* LaunchScreen.storyboard in Resources */,
 				A8BB596C1EC7667300E135FB /* Assets.xcassets in Resources */,
 				A8BB596A1EC7667300E135FB /* Main.storyboard in Resources */,
+				A8F9D4D41EC8C5A0005F3C92 /* BirthdayPickerView.xib in Resources */,
+				A8F9D4D61EC8C5A0005F3C92 /* CountryPickerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,8 +336,11 @@
 			files = (
 				A8BB59671EC7667300E135FB /* ViewController.m in Sources */,
 				A8BB59641EC7667300E135FB /* AppDelegate.m in Sources */,
+				A8F9D4D31EC8C5A0005F3C92 /* BirthdayPickerView.m in Sources */,
+				A8F9D4D51EC8C5A0005F3C92 /* CountryPickerView.m in Sources */,
 				A8BB59611EC7667300E135FB /* main.m in Sources */,
 				A8BB59941EC766FF00E135FB /* ASStorage.m in Sources */,
+				A8F9D4D21EC8C5A0005F3C92 /* ASNibBasedView.m in Sources */,
 				A8BB59971EC7A2F300E135FB /* ASRegistrationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

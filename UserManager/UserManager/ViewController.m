@@ -13,7 +13,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *password;
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
 @property (strong, nonatomic) IBOutlet UIButton *signinButton;
-
 @end
 
 @implementation ViewController

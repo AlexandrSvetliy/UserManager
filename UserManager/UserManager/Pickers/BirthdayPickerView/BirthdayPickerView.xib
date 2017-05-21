@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BirthdayPickerView">
+            <connections>
+                <outlet property="birthdayDatePicker" destination="Rlf-M0-EXk" id="fbZ-lm-K8h"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="xwT-Ne-s2M" userLabel="Birthday Picker View">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="265"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8lP-Sp-HqE" userLabel="Buttons View">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bU9-mh-e4l">
+                            <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="aYd-GX-d9n"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="17"/>
+                            <state key="normal" title="Now"/>
+                            <connections>
+                                <action selector="nowButtonPressed:" destination="-1" eventType="touchUpInside" id="iUW-u8-Vfm"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPC-dJ-lBk">
+                            <rect key="frame" x="295" y="0.0" width="80" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="ygO-Yf-37W"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="17"/>
+                            <state key="normal" title="Done"/>
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="-1" eventType="touchUpInside" id="L80-XA-leL"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.090196078430000007" green="0.2470588235" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" red="0.45098039220000002" green="0.72941176470000002" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="bU9-mh-e4l" firstAttribute="top" secondItem="8lP-Sp-HqE" secondAttribute="top" id="02n-7L-dcL"/>
+                        <constraint firstAttribute="bottom" secondItem="bU9-mh-e4l" secondAttribute="bottom" id="8dZ-CQ-Chu"/>
+                        <constraint firstAttribute="trailing" secondItem="oPC-dJ-lBk" secondAttribute="trailing" id="Juc-YG-bjQ"/>
+                        <constraint firstItem="oPC-dJ-lBk" firstAttribute="top" secondItem="8lP-Sp-HqE" secondAttribute="top" id="V2A-RR-RMn"/>
+                        <constraint firstItem="bU9-mh-e4l" firstAttribute="leading" secondItem="8lP-Sp-HqE" secondAttribute="leading" id="kfv-XA-AwG"/>
+                        <constraint firstAttribute="bottom" secondItem="oPC-dJ-lBk" secondAttribute="bottom" id="y3I-yZ-6Kc"/>
+                    </constraints>
+                </view>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Rlf-M0-EXk" userLabel="Birthday Date Picker">
+                    <rect key="frame" x="0.0" y="50" width="375" height="215"/>
+                    <color key="tintColor" red="0.45098039220000002" green="0.72941176470000002" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <date key="date" timeIntervalSinceReferenceDate="515858979.58354902">
+                        <!--2017-05-07 14:09:39 +0000-->
+                    </date>
+                    <date key="minimumDate" timeIntervalSinceReferenceDate="-2556237724">
+                        <!--1919-12-31 21:57:56 +0000-->
+                    </date>
+                    <date key="maximumDate" timeIntervalSinceReferenceDate="1104357600">
+                        <!--2035-12-30 22:00:00 +0000-->
+                    </date>
+                </datePicker>
+            </subviews>
+            <color key="backgroundColor" red="0.1843137255" green="0.32549019610000002" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="tintColor" red="0.45098039220000002" green="0.72941176470000002" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="8lP-Sp-HqE" firstAttribute="trailing" secondItem="Rlf-M0-EXk" secondAttribute="trailing" id="6Vq-2S-tCR"/>
+                <constraint firstItem="8lP-Sp-HqE" firstAttribute="leading" secondItem="Rlf-M0-EXk" secondAttribute="leading" id="K3W-Nn-dWP"/>
+                <constraint firstAttribute="trailing" secondItem="Rlf-M0-EXk" secondAttribute="trailing" id="Oam-tz-85t"/>
+                <constraint firstItem="Rlf-M0-EXk" firstAttribute="top" secondItem="xwT-Ne-s2M" secondAttribute="top" constant="50" id="Pcq-TI-Pee"/>
+                <constraint firstItem="8lP-Sp-HqE" firstAttribute="top" secondItem="xwT-Ne-s2M" secondAttribute="top" id="ZTP-6p-Czp"/>
+                <constraint firstItem="Rlf-M0-EXk" firstAttribute="leading" secondItem="xwT-Ne-s2M" secondAttribute="leading" id="osL-hU-zvM"/>
+                <constraint firstAttribute="bottom" secondItem="Rlf-M0-EXk" secondAttribute="bottom" id="sNz-9q-QfK"/>
+                <constraint firstItem="Rlf-M0-EXk" firstAttribute="top" secondItem="8lP-Sp-HqE" secondAttribute="bottom" id="v7r-jV-9Vb"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="29" y="-664"/>
+        </view>
+    </objects>
+</document>
