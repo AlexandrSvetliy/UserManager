@@ -15,7 +15,6 @@
 @property (weak  , nonatomic) UITextField          *lastResponder;
 
 @property (strong, nonatomic) IBOutlet UIScrollView*scrollView;
-@property (strong, nonatomic) IBOutlet UIButton    *signinButton;
 @property (strong, nonatomic) IBOutlet UITextField *login;
 @property (strong, nonatomic) IBOutlet UITextField *password;
 @property (strong, nonatomic) IBOutlet UITextField *firstName;
@@ -24,22 +23,25 @@
 @property (strong, nonatomic) IBOutlet UITextField *birthday;
 @property (strong, nonatomic) IBOutlet UITextField *country;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *gender;
+@property (strong, nonatomic) ASStorage *storage;
 
 @end
 
 @implementation ASRegistrationViewController
 
-@synthesize login,password,firstName,lastName,email,birthday,country;
+@synthesize login,password,firstName,lastName,email,birthday,country,gender;
 @synthesize scrollView,lastResponder;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.signinButton.layer setCornerRadius:4.0];
+    [self subscribeToKeyboardNotifications];
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissAllPickers)];
     [self.view addGestureRecognizer:tapGestureRecognizer];
+    self.storage = [[ASStorage alloc] init];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    [self unsubscribeFromKeyboardNotifications];
 }
 /*
 #pragma mark - Navigation
@@ -140,10 +142,8 @@
 #pragma mark - TextFields states
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    [scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y) animated:YES];
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    [scrollView setContentOffset:CGPointZero animated:YES];
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     if ((lastResponder == birthday || lastResponder == country) && ![textField isFirstResponder]) {
@@ -153,7 +153,7 @@
     {
         if (![textField isFirstResponder]) [self dismissAllPickers];
         (textField == country)?[self showCountryPicker]:[self showBirthdayPicker];
-        [scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y) animated:YES];
+        [scrollView setContentOffset:CGPointMake(0, ASPickerHeight) animated:YES];
         lastResponder = textField;
         return NO;
     }
@@ -167,5 +167,58 @@
     [self.gender setSelectedSegmentIndex:0];
     country.text = @"";
     birthday.text = @"";
+}
+
+#pragma mark - Actions
+
+- (IBAction)signInButtonPressed:(UIButton *)sender {
+    NSDateFormatter *formater = [[NSDateFormatter alloc] init];
+    [formater setDateFormat:dateFormat];
+    
+    ASUser *newUser = [[ASUser alloc] initWithFirstName:firstName.text
+                                               LastName:lastName.text
+                                                  Login:login.text
+                                               Password:[password.text stringWithMD5]
+                                                  Email:email.text
+                                                 Gender:[NSNumber numberWithInteger:gender.selectedSegmentIndex]
+                                               Birthday:[formater dateFromString:birthday.text]
+                                                Country:country.text];
+    [self.storage addUser:newUser];
+}
+
+#pragma mark - Keybord Notifications
+
+- (void)subscribeToKeyboardNotifications {
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self
+                           selector:@selector(keyboardDidChange:)
+                               name:UIKeyboardWillChangeFrameNotification
+                             object:nil];
+}
+
+- (void)unsubscribeFromKeyboardNotifications {
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter removeObserver:self
+                                  name:UIKeyboardWillChangeFrameNotification
+                                object:nil];
+}
+
+- (void)keyboardDidChange:(NSNotification *)notification {
+    NSDictionary *userInfo = notification.userInfo;
+    NSTimeInterval duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect keyboardFrame = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    scrollView.contentInset = UIEdgeInsetsMake(0, 0, keyboardFrame.size.height, 0);
+    [UIView animateWithDuration:duration animations:^{
+        [scrollView scrollRectToVisible:CGRectMake(scrollView.contentSize.width,
+                                                        scrollView.contentSize.height - keyboardFrame.size.height, 0, 0) animated:YES];
+    }];
+}
+
+- (void)keyboardDidHide:(NSNotification *)notification {
+    NSDictionary *userInfo = notification.userInfo;
+    NSTimeInterval duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    [UIView animateWithDuration:duration animations:^{
+        scrollView.contentInset = UIEdgeInsetsZero;
+    }];
 }
 @end
