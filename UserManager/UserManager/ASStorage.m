@@ -28,7 +28,37 @@ static NSString* const usersEntity = @"Users";
     }
     return self;
 }
-- (BOOL)loadStorage {
+- (NSFetchRequest*)fetchRequest {
+    NSManagedObjectContext *context = [self managedObjectContext];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:usersEntity inManagedObjectContext:context];
+    [request setEntity:entity];
+    return request;
+}
+- (BOOL)isUserExistWithFormat:(NSString*)format AndArguments:(NSArray*)arguments {
+    NSFetchRequest *request = [self fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:format argumentArray:arguments];
+    return [self.managedObjectContext countForFetchRequest:request error:nil] > 0;
+}
+- (ASUser*)getUserWithLogin:(NSString*)login {
+//    ASUser *user = [[ASUser alloc] init];
+    NSFetchRequest *request = [self fetchRequest];
+    request.predicate = [NSPredicate predicateWithFormat:@"login == %@" argumentArray:@[login]];
+    NSError *error = nil;
+    NSArray *result = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if (!result) {
+        NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
+        abort();
+    }
+    for(ASUser *object in result) {
+        NSLog(@"Found %@", [object valueForKey:@"login"]);
+//        ASUser*user = [[ASUser alloc] initWithDictionary:
+//                        [object dictionaryWithValuesForKeys:@[@"login",@"firstName",@"lastName",@"email",@"gender",@"country",@"birthday",@"icon",@"password"]]];
+        return object;
+    }
+//    NSManagedObject *object = nil;
+//    
+//    [object dictionaryWithValuesForKeys:result];
 //    NSManagedObjectContext *context = [self managedObjectContext];
 //    NSFetchRequest *request = [[NSFetchRequest alloc] init];
 //    NSEntityDescription *entity = [NSEntityDescription entityForName:usersEntity inManagedObjectContext:context];
@@ -46,7 +76,7 @@ static NSString* const usersEntity = @"Users";
 //    NSLog(@"Added : %@", launchTitle);
     
     //[self.window makeKeyAndVisible];
-    return YES;
+    return nil;
 }
 - (BOOL)cleanStorage {
     return YES;
@@ -107,10 +137,7 @@ static NSString* const usersEntity = @"Users";
     if (_fetchedResultsController)
         return _fetchedResultsController;
     
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:usersEntity inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    [fetchRequest setFetchBatchSize:20];
+    NSFetchRequest *fetchRequest = [self fetchRequest];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"login" ascending:NO];
     NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
@@ -129,11 +156,13 @@ static NSString* const usersEntity = @"Users";
     return _fetchedResultsController;
 }
 - (BOOL)addUser:(ASUser*)user {
+    if (!user && [self isUserExistWithFormat:@"login == %@" AndArguments: @[user.login]]) return NO;
     NSManagedObjectContext *managedObjectContext = [self.fetchedResultsController managedObjectContext];
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:managedObjectContext];
+    ASUser *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:managedObjectContext];
     
-    [newManagedObject setValuesForKeysWithDictionary:[user getUserDictionary]];
+    newManagedObject = user;
+    //[newManagedObject setValuesForKeysWithDictionary:[user getUserDictionary]];
     
     NSError *error = nil;
     if(![managedObjectContext save:&error]){
@@ -142,10 +171,43 @@ static NSString* const usersEntity = @"Users";
     }
     return YES;
 }
-- (BOOL)editUser:(ASUser*)user WithIdentificator:(NSInteger)userID {
+- (BOOL)editUser:(ASUser*)user {
+    if (user && [self isUserExistWithFormat:@"login == %@" AndArguments: @[user.login]]) {
+        NSFetchRequest *request = [self fetchRequest];
+        request.predicate = [NSPredicate predicateWithFormat:@"login == %@" argumentArray:@[user.login]];
+        NSError *error = nil;
+        ASUser *resultUser = [[self.managedObjectContext executeFetchRequest:request error:&error] objectAtIndex:0];
+        if (!resultUser) {
+            NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
+            abort();
+        }
+        [self saveContext];
+    }
     return YES;
 }
 - (BOOL)removeUser:(ASUser*)user WithIdentificator:(NSInteger)userID {
     return YES;
+}
+- (NSArray*)getAllUsers {
+    NSMutableArray *users = [[NSMutableArray alloc] init];
+    NSFetchRequest *request = [self fetchRequest];
+    NSError *error = nil;
+    NSArray *result = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if (!result) {
+        NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
+        abort();
+    }
+//    ASUser *user = nil;
+    NSInteger index = 0;
+    for(ASUser *user in result) {
+        NSLog(@"Load %@...", [user valueForKey:@"login"]);
+//        user = [[ASUser alloc] initWithDictionary:
+//                       [object dictionaryWithValuesForKeys:@[@"login",@"firstName",@"lastName",@"email",@"gender",@"country",@"birthday",@"icon",@"password"]]];
+//        user = object;
+        [users insertObject:user atIndex:index];
+        ++index;
+    }
+    NSLog(@"All users loaded...");
+    return [users copy];
 }
 @end

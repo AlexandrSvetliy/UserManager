@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ASStorage.h"
+#import "NSString+ASHash.h"
+#import "UIViewController+ASMessageBox.h"
+#import "ASUserProfileViewController.h"
+
+static NSString* const ASLoginSequeID = @"ASLoginSequeID";
 
 @interface ViewController : UIViewController
-
 
 @end
 

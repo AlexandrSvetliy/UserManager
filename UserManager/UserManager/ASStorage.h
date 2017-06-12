@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-#import "ASUser.h"
+#import "ASUser+CoreDataClass.h"
 
 @interface ASStorage : NSObject <NSFetchedResultsControllerDelegate>
-- (BOOL)loadStorage;
+- (ASUser*)getUserWithLogin:(NSString*)login;
 - (BOOL)addUser   :(ASUser*)user;
-- (BOOL)editUser  :(ASUser*)user WithIdentificator:(NSInteger)userID;
+- (BOOL)editUser  :(ASUser*)user;
 - (BOOL)removeUser:(ASUser*)user WithIdentificator:(NSInteger)userID;
+- (BOOL)isUserExistWithFormat:(NSString*)format AndArguments:(NSArray*)arguments;
+- (NSArray*)getAllUsers;
 @end

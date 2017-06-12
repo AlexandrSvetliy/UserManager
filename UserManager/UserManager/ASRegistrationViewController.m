@@ -38,6 +38,16 @@
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissAllPickers)];
     [self.view addGestureRecognizer:tapGestureRecognizer];
     self.storage = [[ASStorage alloc] init];
+    
+    firstName.text = @"Alexandr";
+    lastName.text = @"Svetliy";
+    [self.gender setSelectedSegmentIndex:0];
+    country.text = @"Dnepr";
+    birthday.text = @"18.07.1986";
+    email.text = @"it@example.com";
+    login.text = @"alexandr";
+    password.text = @"12345";
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -81,8 +91,7 @@
     }
 }
 - (void)hideCountryPicker {
-    if (self.countryPicker)
-    {
+    if (self.countryPicker) {
         CGRect finalFrame = self.countryPicker.frame;
         finalFrame.origin = CGPointMake(0, self.view.frame.size.height);
         [UIView animateWithDuration:0.3 animations:^{
@@ -133,9 +142,7 @@
 }
 - (void)doneButtonPressedWithBirthdayDate:(NSDate *)birthdayDate{
     [self hideCountryPicker];
-    NSDateFormatter *formater = [[NSDateFormatter alloc] init];
-    [formater setDateFormat:dateFormat];
-    birthday.text = [formater stringFromDate:birthdayDate];
+    birthday.text = [birthdayDate stringWithNormalDate];
     [self hideBirthdayPicker];
 }
 
@@ -149,8 +156,7 @@
     if ((lastResponder == birthday || lastResponder == country) && ![textField isFirstResponder]) {
         [self dismissAllPickers];
     }
-    if (textField == country || textField == birthday)
-    {
+    if (textField == country || textField == birthday) {
         if (![textField isFirstResponder]) [self dismissAllPickers];
         (textField == country)?[self showCountryPicker]:[self showBirthdayPicker];
         [scrollView setContentOffset:CGPointMake(0, ASPickerHeight) animated:YES];
@@ -161,7 +167,7 @@
     
     return YES;
 }
-- (void)cleanTextFeilds {
+- (void)cleanTextFields {
     firstName.text = @"";
     lastName.text = @"";
     [self.gender setSelectedSegmentIndex:0];
@@ -171,22 +177,38 @@
 
 #pragma mark - Actions
 
-- (IBAction)signInButtonPressed:(UIButton *)sender {
-    NSDateFormatter *formater = [[NSDateFormatter alloc] init];
-    [formater setDateFormat:dateFormat];
-    
-    ASUser *newUser = [[ASUser alloc] initWithFirstName:firstName.text
-                                               LastName:lastName.text
-                                                  Login:login.text
-                                               Password:[password.text stringWithMD5]
-                                                  Email:email.text
-                                                 Gender:[NSNumber numberWithInteger:gender.selectedSegmentIndex]
-                                               Birthday:[formater dateFromString:birthday.text]
-                                                Country:country.text];
-    [self.storage addUser:newUser];
+- (IBAction)backButtonPressed:(ASUIButton *)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-#pragma mark - Keybord Notifications
+- (IBAction)signInButtonPressed:(ASUIButton *)sender {
+//    NSDate*date = [[NSDate alloc] dateFromNormalString:birthday.text];
+//    ASUser *newUser = [[ASUser alloc] initWithFirstName:firstName.text
+//                                               LastName:lastName.text
+//                                                  Login:login.text
+//                                               Password:[password.text stringWithMD5]
+//                                                  Email:email.text
+//                                                 Gender:[NSNumber numberWithInteger:gender.selectedSegmentIndex]
+//                                               Birthday:date
+//                                                Country:country.text
+//                                                   icon:UIImagePNGRepresentation([UIImage imageNamed:@"Hamelion Head"])];
+    ASUser *newUser = [ASUser new];
+    newUser.login = login.text;
+    newUser.firstName = firstName.text;
+    newUser.lastName = lastName.text;
+    newUser.password = [password.text stringWithMD5];
+    newUser.email = email.text;
+    newUser.gender = [NSNumber numberWithInteger:gender.selectedSegmentIndex];
+    newUser.birthday = [[NSDate alloc] dateFromNormalString:birthday.text];
+    newUser.country = country.text;
+    newUser.icon = UIImagePNGRepresentation([UIImage imageNamed:@"Hamelion Head"]);
+    
+    if ([self.storage addUser:newUser]) [self.navigationController popToRootViewControllerAnimated:YES];
+    else [self showAlertWithMessage:@"Can't add user to storage." Title:@"Error"];
+    
+}
+
+#pragma mark - Keyboard Notifications
 
 - (void)subscribeToKeyboardNotifications {
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];

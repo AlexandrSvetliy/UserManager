@@ -7,15 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ASUIButton.h"
 #import "NSString+ASHash.h"
+#import "UIViewController+ASMessageBox.h"
+#import "NSDate+ASDate.h"
 #import "CountryPickerView.h"
 #import "BirthdayPickerView.h"
 #import "ASStorage.h"
-#import "ASUser.h"
+#import "ASUser+CoreDataClass.h"
 
 static const CGFloat ASPickerHeight = 245;
 static const CGFloat ASAnimationDuration = 0.4;
-static NSString* dateFormat = @"dd.MM.YYYY";
 
 @interface ASRegistrationViewController : UIViewController <CountryPickerViewDelegate,BirthdayPickerViewDelegate>
 

@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A81910971EE0AFD700A7A1E4 /* UIViewController+ASMessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = A81910961EE0AFD700A7A1E4 /* UIViewController+ASMessageBox.m */; };
 		A81B0C241EDCCA7100FE7309 /* ASUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A81B0C231EDCCA7100FE7309 /* ASUIButton.m */; };
+		A8225DC31EE48ACD00822356 /* ASUsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8225DC21EE48ACD00822356 /* ASUsersTableViewController.m */; };
+		A8225DC61EE48B8D00822356 /* ASUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8225DC51EE48B8D00822356 /* ASUserProfileViewController.m */; };
+		A8225DC91EE4BE4900822356 /* ASTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8225DC81EE4BE4900822356 /* ASTableViewCell.m */; };
 		A831BE141ED5F24F000CDD89 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A831BE121ED5F24F000CDD89 /* DataModel.xcdatamodeld */; };
+		A8AF13111EEF048C000A8009 /* ASUser+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AF130E1EEF048B000A8009 /* ASUser+CoreDataClass.m */; };
+		A8AF13121EEF048C000A8009 /* ASUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AF13101EEF048B000A8009 /* ASUser+CoreDataProperties.m */; };
 		A8BB59611EC7667300E135FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BB59601EC7667300E135FB /* main.m */; };
 		A8BB59641EC7667300E135FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BB59631EC7667300E135FB /* AppDelegate.m */; };
 		A8BB59671EC7667300E135FB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BB59661EC7667300E135FB /* ViewController.m */; };
@@ -19,7 +25,7 @@
 		A8BB59851EC7667300E135FB /* UserManagerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BB59841EC7667300E135FB /* UserManagerUITests.m */; };
 		A8BB59941EC766FF00E135FB /* ASStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BB59931EC766FF00E135FB /* ASStorage.m */; };
 		A8BB59971EC7A2F300E135FB /* ASRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BB59961EC7A2F300E135FB /* ASRegistrationViewController.m */; };
-		A8F9642D1ED1894100CD1B97 /* ASUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F9642C1ED1894100CD1B97 /* ASUser.m */; };
+		A8F206E41EE60EB600CE8BF9 /* NSDate+ASDate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F206E31EE60EB600CE8BF9 /* NSDate+ASDate.m */; };
 		A8F964331ED190DE00CD1B97 /* NSString+ASHash.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F964321ED190DE00CD1B97 /* NSString+ASHash.m */; };
 		A8F9D4D21EC8C5A0005F3C92 /* ASNibBasedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F9D4C91EC8C5A0005F3C92 /* ASNibBasedView.m */; };
 		A8F9D4D31EC8C5A0005F3C92 /* BirthdayPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F9D4CC1EC8C5A0005F3C92 /* BirthdayPickerView.m */; };
@@ -46,9 +52,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A81B0C221EDCCA7100FE7309 /* ASUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASUIButton.h; sourceTree = "<group>"; };
-		A81B0C231EDCCA7100FE7309 /* ASUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASUIButton.m; sourceTree = "<group>"; };
+		A81910951EE0AFD700A7A1E4 /* UIViewController+ASMessageBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+ASMessageBox.h"; path = "../UIViewController+ASMessageBox.h"; sourceTree = "<group>"; };
+		A81910961EE0AFD700A7A1E4 /* UIViewController+ASMessageBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+ASMessageBox.m"; path = "../UIViewController+ASMessageBox.m"; sourceTree = "<group>"; };
+		A81B0C221EDCCA7100FE7309 /* ASUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASUIButton.h; path = ../ASUIButton.h; sourceTree = "<group>"; };
+		A81B0C231EDCCA7100FE7309 /* ASUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASUIButton.m; path = ../ASUIButton.m; sourceTree = "<group>"; };
+		A8225DC11EE48ACD00822356 /* ASUsersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASUsersTableViewController.h; path = ../ASUsersTableViewController.h; sourceTree = "<group>"; };
+		A8225DC21EE48ACD00822356 /* ASUsersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASUsersTableViewController.m; path = ../ASUsersTableViewController.m; sourceTree = "<group>"; };
+		A8225DC41EE48B8D00822356 /* ASUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASUserProfileViewController.h; path = ../ASUserProfileViewController.h; sourceTree = "<group>"; };
+		A8225DC51EE48B8D00822356 /* ASUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASUserProfileViewController.m; path = ../ASUserProfileViewController.m; sourceTree = "<group>"; };
+		A8225DC71EE4BE4900822356 /* ASTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASTableViewCell.h; path = ../ASTableViewCell.h; sourceTree = "<group>"; };
+		A8225DC81EE4BE4900822356 /* ASTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASTableViewCell.m; path = ../ASTableViewCell.m; sourceTree = "<group>"; };
 		A831BE131ED5F24F000CDD89 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		A8AF130D1EEF048B000A8009 /* ASUser+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ASUser+CoreDataClass.h"; path = "../ASUser+CoreDataClass.h"; sourceTree = "<group>"; };
+		A8AF130E1EEF048B000A8009 /* ASUser+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ASUser+CoreDataClass.m"; path = "../ASUser+CoreDataClass.m"; sourceTree = "<group>"; };
+		A8AF130F1EEF048B000A8009 /* ASUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ASUser+CoreDataProperties.h"; path = "../ASUser+CoreDataProperties.h"; sourceTree = "<group>"; };
+		A8AF13101EEF048B000A8009 /* ASUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ASUser+CoreDataProperties.m"; path = "../ASUser+CoreDataProperties.m"; sourceTree = "<group>"; };
 		A8BB595C1EC7667300E135FB /* UserManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8BB59601EC7667300E135FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A8BB59621EC7667300E135FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,10 +87,10 @@
 		A8BB59931EC766FF00E135FB /* ASStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASStorage.m; sourceTree = "<group>"; };
 		A8BB59951EC7A2F300E135FB /* ASRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASRegistrationViewController.h; sourceTree = "<group>"; };
 		A8BB59961EC7A2F300E135FB /* ASRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASRegistrationViewController.m; sourceTree = "<group>"; };
-		A8F9642B1ED1894100CD1B97 /* ASUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASUser.h; sourceTree = "<group>"; };
-		A8F9642C1ED1894100CD1B97 /* ASUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASUser.m; sourceTree = "<group>"; };
-		A8F964311ED190DE00CD1B97 /* NSString+ASHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ASHash.h"; sourceTree = "<group>"; };
-		A8F964321ED190DE00CD1B97 /* NSString+ASHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ASHash.m"; sourceTree = "<group>"; };
+		A8F206E21EE60EB600CE8BF9 /* NSDate+ASDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+ASDate.h"; path = "../NSDate+ASDate.h"; sourceTree = "<group>"; };
+		A8F206E31EE60EB600CE8BF9 /* NSDate+ASDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+ASDate.m"; path = "../NSDate+ASDate.m"; sourceTree = "<group>"; };
+		A8F964311ED190DE00CD1B97 /* NSString+ASHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+ASHash.h"; path = "../NSString+ASHash.h"; sourceTree = "<group>"; };
+		A8F964321ED190DE00CD1B97 /* NSString+ASHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+ASHash.m"; path = "../NSString+ASHash.m"; sourceTree = "<group>"; };
 		A8F9D4C81EC8C5A0005F3C92 /* ASNibBasedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASNibBasedView.h; sourceTree = "<group>"; };
 		A8F9D4C91EC8C5A0005F3C92 /* ASNibBasedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASNibBasedView.m; sourceTree = "<group>"; };
 		A8F9D4CB1EC8C5A0005F3C92 /* BirthdayPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirthdayPickerView.h; sourceTree = "<group>"; };
@@ -111,11 +129,6 @@
 		A8BB59531EC7667300E135FB = {
 			isa = PBXGroup;
 			children = (
-				A81B0C221EDCCA7100FE7309 /* ASUIButton.h */,
-				A81B0C231EDCCA7100FE7309 /* ASUIButton.m */,
-				A831BE121ED5F24F000CDD89 /* DataModel.xcdatamodeld */,
-				A8F964311ED190DE00CD1B97 /* NSString+ASHash.h */,
-				A8F964321ED190DE00CD1B97 /* NSString+ASHash.m */,
 				A8BB595E1EC7667300E135FB /* UserManager */,
 				A8BB59781EC7667300E135FB /* UserManagerTests */,
 				A8BB59831EC7667300E135FB /* UserManagerUITests */,
@@ -136,6 +149,25 @@
 		A8BB595E1EC7667300E135FB /* UserManager */ = {
 			isa = PBXGroup;
 			children = (
+				A8AF130D1EEF048B000A8009 /* ASUser+CoreDataClass.h */,
+				A8AF130E1EEF048B000A8009 /* ASUser+CoreDataClass.m */,
+				A8AF130F1EEF048B000A8009 /* ASUser+CoreDataProperties.h */,
+				A8AF13101EEF048B000A8009 /* ASUser+CoreDataProperties.m */,
+				A8F206E21EE60EB600CE8BF9 /* NSDate+ASDate.h */,
+				A8F206E31EE60EB600CE8BF9 /* NSDate+ASDate.m */,
+				A8225DC71EE4BE4900822356 /* ASTableViewCell.h */,
+				A8225DC81EE4BE4900822356 /* ASTableViewCell.m */,
+				A8225DC41EE48B8D00822356 /* ASUserProfileViewController.h */,
+				A8225DC51EE48B8D00822356 /* ASUserProfileViewController.m */,
+				A8225DC11EE48ACD00822356 /* ASUsersTableViewController.h */,
+				A8225DC21EE48ACD00822356 /* ASUsersTableViewController.m */,
+				A81B0C221EDCCA7100FE7309 /* ASUIButton.h */,
+				A81B0C231EDCCA7100FE7309 /* ASUIButton.m */,
+				A81910951EE0AFD700A7A1E4 /* UIViewController+ASMessageBox.h */,
+				A81910961EE0AFD700A7A1E4 /* UIViewController+ASMessageBox.m */,
+				A831BE121ED5F24F000CDD89 /* DataModel.xcdatamodeld */,
+				A8F964311ED190DE00CD1B97 /* NSString+ASHash.h */,
+				A8F964321ED190DE00CD1B97 /* NSString+ASHash.m */,
 				A8BB59621EC7667300E135FB /* AppDelegate.h */,
 				A8BB59631EC7667300E135FB /* AppDelegate.m */,
 				A8BB59651EC7667300E135FB /* ViewController.h */,
@@ -150,8 +182,6 @@
 				A8BB59931EC766FF00E135FB /* ASStorage.m */,
 				A8BB59951EC7A2F300E135FB /* ASRegistrationViewController.h */,
 				A8BB59961EC7A2F300E135FB /* ASRegistrationViewController.m */,
-				A8F9642B1ED1894100CD1B97 /* ASUser.h */,
-				A8F9642C1ED1894100CD1B97 /* ASUser.m */,
 			);
 			path = UserManager;
 			sourceTree = "<group>";
@@ -352,18 +382,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8F206E41EE60EB600CE8BF9 /* NSDate+ASDate.m in Sources */,
 				A831BE141ED5F24F000CDD89 /* DataModel.xcdatamodeld in Sources */,
 				A81B0C241EDCCA7100FE7309 /* ASUIButton.m in Sources */,
+				A8225DC31EE48ACD00822356 /* ASUsersTableViewController.m in Sources */,
+				A8225DC91EE4BE4900822356 /* ASTableViewCell.m in Sources */,
+				A8225DC61EE48B8D00822356 /* ASUserProfileViewController.m in Sources */,
+				A8AF13111EEF048C000A8009 /* ASUser+CoreDataClass.m in Sources */,
 				A8BB59671EC7667300E135FB /* ViewController.m in Sources */,
+				A8AF13121EEF048C000A8009 /* ASUser+CoreDataProperties.m in Sources */,
 				A8BB59641EC7667300E135FB /* AppDelegate.m in Sources */,
 				A8F9D4D31EC8C5A0005F3C92 /* BirthdayPickerView.m in Sources */,
 				A8F9D4D51EC8C5A0005F3C92 /* CountryPickerView.m in Sources */,
 				A8BB59611EC7667300E135FB /* main.m in Sources */,
 				A8BB59941EC766FF00E135FB /* ASStorage.m in Sources */,
 				A8F9D4D21EC8C5A0005F3C92 /* ASNibBasedView.m in Sources */,
-				A8F9642D1ED1894100CD1B97 /* ASUser.m in Sources */,
 				A8BB59971EC7A2F300E135FB /* ASRegistrationViewController.m in Sources */,
 				A8F964331ED190DE00CD1B97 /* NSString+ASHash.m in Sources */,
+				A81910971EE0AFD700A7A1E4 /* UIViewController+ASMessageBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,7 +666,8 @@
 				A831BE131ED5F24F000CDD89 /* DataModel.xcdatamodel */,
 			);
 			currentVersion = A831BE131ED5F24F000CDD89 /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
+			name = DataModel.xcdatamodeld;
+			path = ../DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
