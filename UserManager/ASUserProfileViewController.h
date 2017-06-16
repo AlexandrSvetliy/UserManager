@@ -14,6 +14,6 @@
 static NSString* const ASUsersListSequeID = @"ASUsersListSequeID";
 
 @interface ASUserProfileViewController : UIViewController
-- (void)setStorage:(ASStorage *)storage;
+//- (void)setStorage:(ASStorage *)storage;
 - (void)setCurrentUser:(ASUser*)user;
 @end

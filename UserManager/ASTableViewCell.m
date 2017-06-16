@@ -28,7 +28,7 @@
 
 - (void)fillWithPerson:(ASUser *)user {
     self.user = user;
-    //[user addObserver:self forKeyPath:@"login" options:NSKeyValueObservingOptionNew context:nil];
+//    [user addObserver:self forKeyPath:@"login" options:NSKeyValueObservingOptionNew context:nil];
     
 //    NSDictionary *userDictionary = [user getUserDictionary];
     self.userLogin.text = user.login;//[userDictionary valueForKey:@"login"];

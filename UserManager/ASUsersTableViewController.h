@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ASStorage.h"
+//#import "ASStorage.h"
+#import "ASUser+CoreDataManagerExtention.h"
 #import "ASTableViewCell.h"
 
 @interface ASUsersTableViewController : UITableViewController

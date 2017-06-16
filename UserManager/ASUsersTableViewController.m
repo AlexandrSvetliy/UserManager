@@ -9,7 +9,7 @@
 #import "ASUsersTableViewController.h"
 
 @interface ASUsersTableViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (strong, nonatomic) ASStorage *storage;
+//@property (strong, nonatomic) ASStorage *storage;
 
 @property (nonatomic, strong) NSArray *users;
 @end
@@ -31,9 +31,9 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
      //self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-- (void)setStorage:(ASStorage *)storage {
-    _storage = storage;
-}
+//- (void)setStorage:(ASStorage *)storage {
+//    _storage = storage;
+//}
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
@@ -53,7 +53,7 @@
 //        NSLog(@"%@ %@ %@ %@", address.country, address.city, address.street, address.code);
 //    }
     
-    self.users = [self.storage getAllUsers];
+    self.users = [ASUser users];
     [self.usersTableView reloadData];
     [self.tableView.refreshControl endRefreshing];
 }

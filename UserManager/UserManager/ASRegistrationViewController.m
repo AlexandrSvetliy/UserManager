@@ -7,6 +7,7 @@
 //
 
 #import "ASRegistrationViewController.h"
+#import "ASUser+CoreDataManagerExtention.h"
 
 @interface ASRegistrationViewController ()
 
@@ -174,7 +175,15 @@
     country.text = @"";
     birthday.text = @"";
 }
-
+- (NSDictionary *)userDictionary {
+    return @{@"login":login.text,@"firstName":firstName.text,@"lastName":lastName.text,
+             @"password":[password.text stringWithMD5],
+             @"gender":[NSNumber numberWithInteger:gender.selectedSegmentIndex],
+             @"country":country.text,
+             @"birthday":[[NSDate alloc] dateFromNormalString:birthday.text],
+             @"email":email.text,
+             @"icon":UIImagePNGRepresentation([UIImage imageNamed:@"Hamelion Head"])};
+}
 #pragma mark - Actions
 
 - (IBAction)backButtonPressed:(ASUIButton *)sender {
@@ -192,19 +201,34 @@
 //                                               Birthday:date
 //                                                Country:country.text
 //                                                   icon:UIImagePNGRepresentation([UIImage imageNamed:@"Hamelion Head"])];
-    ASUser *newUser = [ASUser new];
-    newUser.login = login.text;
-    newUser.firstName = firstName.text;
-    newUser.lastName = lastName.text;
-    newUser.password = [password.text stringWithMD5];
-    newUser.email = email.text;
-    newUser.gender = [NSNumber numberWithInteger:gender.selectedSegmentIndex];
-    newUser.birthday = [[NSDate alloc] dateFromNormalString:birthday.text];
-    newUser.country = country.text;
-    newUser.icon = UIImagePNGRepresentation([UIImage imageNamed:@"Hamelion Head"]);
+//    ASUser *newUser = [[ASUser alloc] init];
+//    newUser.login = login.text;
+//    newUser.firstName = firstName.text;
+//    newUser.lastName = lastName.text;
+//    newUser.password = [password.text stringWithMD5];
+//    newUser.email = email.text;
+//    newUser.gender = gender.selectedSegmentIndex;
+//    newUser.birthday = [[NSDate alloc] dateFromNormalString:birthday.text];
+//    newUser.country = country.text;
+//    newUser.icon = UIImagePNGRepresentation([UIImage imageNamed:@"Hamelion Head"]);
+    NSDictionary*dict = self.userDictionary;
+    if (!self.user) {
+        self.user = [ASUser addUserWithDictionary:self.userDictionary];
+        if (self.saveHandler) {
+            self.saveHandler(self.user);
+        }
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    } else {
+        [self showAlertWithMessage:@"Can't add user to storage." Title:@"Error"];
+//        [self.user updateUserWithDictionary:self.userDictionary];
+    }
     
-    if ([self.storage addUser:newUser]) [self.navigationController popToRootViewControllerAnimated:YES];
-    else [self showAlertWithMessage:@"Can't add user to storage." Title:@"Error"];
+//    [self.user updateUserWithDictionary:self.userDictionary];
+    
+    
+    
+//    if ([self.storage addUser:newUser]) [self.navigationController popToRootViewControllerAnimated:YES];
+//    else [self showAlertWithMessage:@"Can't add user to storage." Title:@"Error"];
     
 }
 

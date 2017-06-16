@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ASUser (CoreDataProperties)
 
 + (NSFetchRequest<ASUser *> *)fetchRequest;
+- (void)setUserWithDictionary:(NSDictionary *)dictionary;
 
 @property (nullable, nonatomic, copy) NSDate *birthday;
 @property (nullable, nonatomic, copy) NSString *country;

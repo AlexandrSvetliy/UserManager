@@ -17,7 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *country;
 @property (strong, nonatomic) IBOutlet UILabel *gender;
 @property (strong, nonatomic) IBOutlet UIImageView *userIcon;
-@property (strong, nonatomic)          ASStorage   *storage;
+//@property (strong, nonatomic)          ASStorage   *storage;
 @property (strong, nonatomic)          ASUser      *currentUser;
 
 @end
@@ -34,7 +34,7 @@
     [super didReceiveMemoryWarning];
 }
 - (void)loadUserInfo {
-    self.currentUser = [self.storage getUserWithLogin:self.currentUser.login];
+//    self.currentUser = [ASUser getUserWithLogin:self.currentUser.login];
 //    NSDictionary *userDictionary = [self.currentUser getUserDictionary];
     
     self.userLoginLabel.text = self.currentUser.login;//userDictionary[@"login"];
@@ -48,10 +48,10 @@
 }
 
 #pragma mark - Public
-
-- (void)setStorage:(ASStorage *)storage {
-    _storage = storage;
-}
+//
+//- (void)setStorage:(ASStorage *)storage {
+//    _storage = storage;
+//}
 - (void)setCurrentUser:(ASUser*)user {
     _currentUser = user;
 }
@@ -61,8 +61,8 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:ASUsersListSequeID]) {
-        id destinationController = [segue destinationViewController];
-        [destinationController setStorage:self.storage];
+//        id destinationController = [segue destinationViewController];
+//        [destinationController setStorage:self.storage];
     }
 }
 
@@ -99,8 +99,8 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     self.userIcon.image = image;
-    [self.currentUser setIcon:UIImagePNGRepresentation(image)];
-    [self.storage editUser:self.currentUser];
+//    [self.currentUser setIcon:UIImagePNGRepresentation(image)];
+//    [self.storage editUser:self.currentUser];
     //[self.tableView reloadData];
     
     [self dismissViewControllerAnimated:picker completion:nil];

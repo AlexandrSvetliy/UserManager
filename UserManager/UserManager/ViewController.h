@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ASStorage.h"
+//#import "ASStorage.h"
+#import "ASUser+CoreDataManagerExtention.h"
 #import "NSString+ASHash.h"
 #import "UIViewController+ASMessageBox.h"
 #import "ASUserProfileViewController.h"
