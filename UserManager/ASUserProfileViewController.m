@@ -20,6 +20,7 @@
 //@property (strong, nonatomic)          ASStorage   *storage;
 @property (strong, nonatomic)          ASUser      *currentUser;
 
+
 @end
 
 @implementation ASUserProfileViewController
@@ -99,6 +100,24 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     self.userIcon.image = image;
+    self.currentUser.icon = UIImagePNGRepresentation(image);
+    [self.currentUser save];
+//    if (self.saveHandler) {
+//        self.saveHandler(self.currentUser);
+//    }
+//    else NSLog(@"Can't save user %@",self.currentUser.login);
+//    [self.currentUser saveUser];
+//    [self.currentUser updateUserWithUser:self.currentUser];
+//    if (!self.user) {
+//        self.user = [ASUser addUserWithDictionary:self.userDictionary];
+//        if (self.saveHandler) {
+//            self.saveHandler(self.user);
+//        }
+//        [self.navigationController popToRootViewControllerAnimated:YES];
+//    } else {
+//        [self showAlertWithMessage:@"Can't add user to storage." Title:@"Error"];
+//        //        [self.user updateUserWithDictionary:self.userDictionary];
+//    }
 //    [self.currentUser setIcon:UIImagePNGRepresentation(image)];
 //    [self.storage editUser:self.currentUser];
     //[self.tableView reloadData];

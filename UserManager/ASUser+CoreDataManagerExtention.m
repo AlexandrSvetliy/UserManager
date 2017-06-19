@@ -25,26 +25,6 @@
     
     return objects;
 }
-- (void)updateUserWithDictionary:(NSDictionary *)dictionary {
-    [self setUserWithDictionary:dictionary];
-    [[ASStorage sharedInstanse] saveContext];
-}
-+ (ASUser *)addUserWithDictionary:(NSDictionary *)dictionary {
-    ASStorage *dataController = [ASStorage sharedInstanse];
-    NSManagedObjectContext *context = [dataController managedObjectContext];
-    
-    ASUser *user = [NSEntityDescription insertNewObjectForEntityForName:usersEntity inManagedObjectContext:context];
-    [user updateUserWithDictionary:dictionary];
-    
-    return user;
-}
-
-- (void)remove {
-    ASStorage *storage = [ASStorage sharedInstanse];
-    [storage.managedObjectContext deleteObject:self];
-    [storage saveContext];
-}
-
 + (NSArray *)usersSearchedWithString:(NSString *)string {
     NSArray *parameters = [[string stringByReplacingOccurrencesOfString:@"," withString:@" "] componentsSeparatedByString:@" "];
     NSLog(@"%@", parameters);
@@ -68,6 +48,29 @@
     request.predicate = [NSPredicate predicateWithFormat:format argumentArray:arguments];
     return [[[ASStorage sharedInstanse] managedObjectContext] countForFetchRequest:request error:nil] > 0;
 }
+- (void)updateUserWithDictionary:(NSDictionary *)dictionary {
+    [self setUserWithDictionary:dictionary];
+    [[ASStorage sharedInstanse] saveContext];
+}
+- (void)save {
+//    [self updateUserWithDictionary:[self dictionaryRepresentation]];
+    [[ASStorage sharedInstanse] saveContext];
+}
++ (ASUser *)addUserWithDictionary:(NSDictionary *)dictionary {
+    ASStorage *dataController = [ASStorage sharedInstanse];
+    NSManagedObjectContext *context = [dataController managedObjectContext];
+    
+    ASUser *user = [NSEntityDescription insertNewObjectForEntityForName:usersEntity inManagedObjectContext:context];
+    [user updateUserWithDictionary:dictionary];
+    
+    return user;
+}
+- (void)remove {
+    ASStorage *storage = [ASStorage sharedInstanse];
+    [storage.managedObjectContext deleteObject:self];
+    [storage saveContext];
+}
+
 + (ASUser *)getUserWithLogin:(NSString *)login {
     NSFetchRequest *request = [self fetchRequest];
     request.predicate = [NSPredicate predicateWithFormat:@"login == %@" argumentArray:@[login]];

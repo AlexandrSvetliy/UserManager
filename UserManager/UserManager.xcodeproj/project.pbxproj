@@ -14,6 +14,7 @@
 		A8225DC91EE4BE4900822356 /* ASTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8225DC81EE4BE4900822356 /* ASTableViewCell.m */; };
 		A831BE141ED5F24F000CDD89 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A831BE121ED5F24F000CDD89 /* DataModel.xcdatamodeld */; };
 		A881D29B1EF4625900779961 /* ASUser+CoreDataManagerExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = A881D29A1EF4625900779961 /* ASUser+CoreDataManagerExtention.m */; };
+		A881D29E1EF5910E00779961 /* NSObject+ASDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = A881D29D1EF5910E00779961 /* NSObject+ASDictionary.m */; };
 		A8AF13111EEF048C000A8009 /* ASUser+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AF130E1EEF048B000A8009 /* ASUser+CoreDataClass.m */; };
 		A8AF13121EEF048C000A8009 /* ASUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A8AF13101EEF048B000A8009 /* ASUser+CoreDataProperties.m */; };
 		A8BB59611EC7667300E135FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BB59601EC7667300E135FB /* main.m */; };
@@ -66,6 +67,9 @@
 		A831BE131ED5F24F000CDD89 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		A881D2991EF4625900779961 /* ASUser+CoreDataManagerExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ASUser+CoreDataManagerExtention.h"; path = "../ASUser+CoreDataManagerExtention.h"; sourceTree = "<group>"; };
 		A881D29A1EF4625900779961 /* ASUser+CoreDataManagerExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ASUser+CoreDataManagerExtention.m"; path = "../ASUser+CoreDataManagerExtention.m"; sourceTree = "<group>"; };
+		A881D29C1EF5910E00779961 /* NSObject+ASDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ASDictionary.h"; sourceTree = "<group>"; };
+		A881D29D1EF5910E00779961 /* NSObject+ASDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ASDictionary.m"; sourceTree = "<group>"; };
+		A881D29F1EF5C10800779961 /* ASConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASConstants.h; sourceTree = "<group>"; };
 		A8AF130D1EEF048B000A8009 /* ASUser+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ASUser+CoreDataClass.h"; path = "../ASUser+CoreDataClass.h"; sourceTree = "<group>"; };
 		A8AF130E1EEF048B000A8009 /* ASUser+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ASUser+CoreDataClass.m"; path = "../ASUser+CoreDataClass.m"; sourceTree = "<group>"; };
 		A8AF130F1EEF048B000A8009 /* ASUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ASUser+CoreDataProperties.h"; path = "../ASUser+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 		A8BB59531EC7667300E135FB = {
 			isa = PBXGroup;
 			children = (
+				A881D29F1EF5C10800779961 /* ASConstants.h */,
 				A8BB595E1EC7667300E135FB /* UserManager */,
 				A8BB59781EC7667300E135FB /* UserManagerTests */,
 				A8BB59831EC7667300E135FB /* UserManagerUITests */,
@@ -187,6 +192,8 @@
 				A8BB59931EC766FF00E135FB /* ASStorage.m */,
 				A8BB59951EC7A2F300E135FB /* ASRegistrationViewController.h */,
 				A8BB59961EC7A2F300E135FB /* ASRegistrationViewController.m */,
+				A881D29C1EF5910E00779961 /* NSObject+ASDictionary.h */,
+				A881D29D1EF5910E00779961 /* NSObject+ASDictionary.m */,
 			);
 			path = UserManager;
 			sourceTree = "<group>";
@@ -406,6 +413,7 @@
 				A8F964331ED190DE00CD1B97 /* NSString+ASHash.m in Sources */,
 				A881D29B1EF4625900779961 /* ASUser+CoreDataManagerExtention.m in Sources */,
 				A81910971EE0AFD700A7A1E4 /* UIViewController+ASMessageBox.m in Sources */,
+				A881D29E1EF5910E00779961 /* NSObject+ASDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

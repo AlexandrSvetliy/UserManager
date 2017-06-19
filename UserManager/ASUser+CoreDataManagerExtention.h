@@ -7,6 +7,7 @@
 //
 
 #import "ASUser+CoreDataClass.h"
+#import "NSObject+ASDictionary.h"
 #import "ASStorage.h"
 
 @interface ASUser (CoreDataManagerExtention)
@@ -18,6 +19,7 @@
 + (ASUser *)getUserWithLogin:(NSString *)login;
 + (BOOL)isUserExistWithFormat:(NSString*)format AndArguments:(NSArray*)arguments;
 - (void)updateUserWithDictionary:(NSDictionary *)dictionary;
+- (void)save;
 - (void)remove;
 
 @end

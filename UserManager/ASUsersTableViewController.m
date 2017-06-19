@@ -7,6 +7,7 @@
 //
 
 #import "ASUsersTableViewController.h"
+#import "ASRegistrationViewController.h"
 
 @interface ASUsersTableViewController () <UITableViewDataSource, UITableViewDelegate>
 //@property (strong, nonatomic) ASStorage *storage;
@@ -18,7 +19,7 @@
 //@synthesize storage;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"+" style:UIBarButtonItemStylePlain target:self action:@selector(addUser)];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addUser)];
     self.navigationItem.rightBarButtonItem = item;
     [self reloadAllData];
     
@@ -36,6 +37,7 @@
 //}
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self reloadAllData];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:YES animated:NO];
@@ -45,7 +47,8 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)addUser {
-    
+    [self performSegueWithIdentifier:ASAddUserSequeID sender:self];
+//    [self showRegistrationViewControllerWithUser:nil];
 }
 - (void)reloadAllData {
 //    NSArray *addresses = [Address allAddresses];
@@ -97,8 +100,16 @@
      //Return NO if you do not want the specified item to be editable.
     return YES;
 }
+- (void)showRegistrationViewControllerWithUser:(id)user {
+    [self performSegueWithIdentifier:ASAddUserSequeID sender:self];
+//    ASRegistrationViewController *userViewController = [ASRegistrationViewController new];
+//    userViewController.user = user;
+//    userViewController.saveHandler = ^(id person) {
+//        [self reloadAllData];
+//    };
+//    [self.navigationController pushViewController:userViewController animated:YES];
+}
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -108,7 +119,7 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -128,8 +139,16 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([[segue identifier] isEqualToString:ASAddUserSequeID]) {
+//                ASRegistrationViewController *destinationController = [segue destinationViewController];
+    } else if ([[segue identifier] isEqualToString:ASEditUserSequeID]){
+        ASRegistrationViewController *destinationController = [segue destinationViewController];
+        if ([sender isKindOfClass:[ASTableViewCell class]]) {
+            ASTableViewCell *cell = sender;
+            destinationController.user = cell.user;
+//            [destinationController fillWithUserDictionary:cell.user.dictionaryRepresentation];
+        }
+    }
 }
 
 

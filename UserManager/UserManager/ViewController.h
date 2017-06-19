@@ -13,7 +13,7 @@
 #import "UIViewController+ASMessageBox.h"
 #import "ASUserProfileViewController.h"
 
-static NSString* const ASLoginSequeID = @"ASLoginSequeID";
+
 
 @interface ViewController : UIViewController
 

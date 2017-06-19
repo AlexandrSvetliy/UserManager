@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-static NSString* dateFormat = @"dd.MM.YYYY";
+#import "ASConstants.h"
+
 @interface NSDate (ASDate)
 - (NSString*)stringWithNormalDate;
 - (instancetype)dateFromNormalString:(NSString*)string;

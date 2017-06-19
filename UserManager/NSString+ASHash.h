@@ -11,4 +11,5 @@
 
 @interface NSString (ASHash)
 - (instancetype)stringWithMD5;
+- (BOOL)isValidEmail;
 @end

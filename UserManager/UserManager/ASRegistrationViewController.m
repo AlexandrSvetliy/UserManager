@@ -9,6 +9,11 @@
 #import "ASRegistrationViewController.h"
 #import "ASUser+CoreDataManagerExtention.h"
 
+struct ASValidateStruct {
+    ASValidationBool isValid;
+    ASValidationMessage message;
+};
+
 @interface ASRegistrationViewController ()
 
 @property (strong, nonatomic) CountryPickerView    *countryPicker;
@@ -24,7 +29,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *birthday;
 @property (strong, nonatomic) IBOutlet UITextField *country;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *gender;
-@property (strong, nonatomic) ASStorage *storage;
+//@property (strong, nonatomic) ASStorage *storage;
 
 @end
 
@@ -38,21 +43,33 @@
     [self subscribeToKeyboardNotifications];
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissAllPickers)];
     [self.view addGestureRecognizer:tapGestureRecognizer];
-    self.storage = [[ASStorage alloc] init];
+    if (self.user) {
+        [self fillWithUserDictionary:self.user.dictionaryRepresentation];
+    }
     
-    firstName.text = @"Alexandr";
-    lastName.text = @"Svetliy";
-    [self.gender setSelectedSegmentIndex:0];
-    country.text = @"Dnepr";
-    birthday.text = @"18.07.1986";
-    email.text = @"it@example.com";
-    login.text = @"alexandr";
-    password.text = @"12345";
+//    firstName.text = @"Alexandr";
+//    lastName.text = @"Svetliy";
+//    [self.gender setSelectedSegmentIndex:0];
+//    country.text = @"Dnepr";
+//    birthday.text = @"18.07.1986";
+//    email.text = @"it@example.com";
+//    login.text = @"alexandr";
+//    password.text = @"12345";
     
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     [self unsubscribeFromKeyboardNotifications];
+}
+- (void)fillWithUserDictionary:(NSDictionary*)dictionary {
+    firstName.text = dictionary[@"firstName"];
+    lastName.text = dictionary[@"lastName"];
+    [self.gender setSelectedSegmentIndex:[dictionary[@"gender"] integerValue]];
+    country.text = dictionary[@"country"];
+    birthday.text = [dictionary[@"birthday"] stringWithNormalDate];
+    email.text = dictionary[@"email"];
+    login.text = dictionary[@"login"];
+    password.text = @"";
 }
 /*
 #pragma mark - Navigation
@@ -63,6 +80,9 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    //if (identifier == ASRegi)
+}
 
 #pragma mark - Pickers manage methods
 
@@ -184,52 +204,47 @@
              @"email":email.text,
              @"icon":UIImagePNGRepresentation([UIImage imageNamed:@"Hamelion Head"])};
 }
+- (NSDictionary*)validateFields {
+    BOOL isValid = YES;
+    NSMutableString *message = [NSMutableString stringWithString:@"Please fix following errors and try again:\r"];
+    NSMutableString *errors = [NSMutableString stringWithString:@""];
+    if (!login.text.length)
+        [errors appendString:@"Login field is requeried.\r"];
+    if (!firstName.text.length) [errors appendString:@"First Name field is requeried.\r"];
+    if (!lastName.text.length) [errors appendString:@"Last Name field is requeried.\r"];
+    if (!country.text.length) [errors appendString:@"Country field is requeried.\r"];
+    if (!birthday.text.length) [errors appendString:@"Birthday field is requeried.\r"];
+    if (!password.text.length) [errors appendString:@"Password field is requeried.\r"];
+    if (!email.text.isValidEmail)
+        [errors appendString:@"Please enter the valid email.\r"];
+    if (errors.length) {
+        isValid = NO;
+        [message appendString:errors];
+    }
+    else {
+        [message setString:@""];
+    }
+    return @{@"isValid":[NSNumber numberWithBool:isValid],@"message":[message copy]};
+}
+
 #pragma mark - Actions
 
 - (IBAction)backButtonPressed:(ASUIButton *)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)signInButtonPressed:(ASUIButton *)sender {
-//    NSDate*date = [[NSDate alloc] dateFromNormalString:birthday.text];
-//    ASUser *newUser = [[ASUser alloc] initWithFirstName:firstName.text
-//                                               LastName:lastName.text
-//                                                  Login:login.text
-//                                               Password:[password.text stringWithMD5]
-//                                                  Email:email.text
-//                                                 Gender:[NSNumber numberWithInteger:gender.selectedSegmentIndex]
-//                                               Birthday:date
-//                                                Country:country.text
-//                                                   icon:UIImagePNGRepresentation([UIImage imageNamed:@"Hamelion Head"])];
-//    ASUser *newUser = [[ASUser alloc] init];
-//    newUser.login = login.text;
-//    newUser.firstName = firstName.text;
-//    newUser.lastName = lastName.text;
-//    newUser.password = [password.text stringWithMD5];
-//    newUser.email = email.text;
-//    newUser.gender = gender.selectedSegmentIndex;
-//    newUser.birthday = [[NSDate alloc] dateFromNormalString:birthday.text];
-//    newUser.country = country.text;
-//    newUser.icon = UIImagePNGRepresentation([UIImage imageNamed:@"Hamelion Head"]);
-    NSDictionary*dict = self.userDictionary;
-    if (!self.user) {
-        self.user = [ASUser addUserWithDictionary:self.userDictionary];
-        if (self.saveHandler) {
-            self.saveHandler(self.user);
-        }
-        [self.navigationController popToRootViewControllerAnimated:YES];
+    NSDictionary *isValidFields = self.validateFields;
+    if ([isValidFields[@"isValid"] boolValue]) {
+        if (!self.user) self.user = [ASUser addUserWithDictionary:self.userDictionary];
+        else [self.user setUserWithDictionary:self.userDictionary];
+        [self.user save];
+        [self.navigationController popViewControllerAnimated:YES];
+        
     } else {
-        [self showAlertWithMessage:@"Can't add user to storage." Title:@"Error"];
-//        [self.user updateUserWithDictionary:self.userDictionary];
+        [self showAlertWithMessage:isValidFields[@"message"] Title:@"Error"];
     }
-    
-//    [self.user updateUserWithDictionary:self.userDictionary];
-    
-    
-    
-//    if ([self.storage addUser:newUser]) [self.navigationController popToRootViewControllerAnimated:YES];
-//    else [self showAlertWithMessage:@"Can't add user to storage." Title:@"Error"];
-    
 }
 
 #pragma mark - Keyboard Notifications

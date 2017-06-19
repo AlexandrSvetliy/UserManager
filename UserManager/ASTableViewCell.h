@@ -12,6 +12,6 @@
 @interface ASTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *userLogin;
 @property (strong, nonatomic) IBOutlet UILabel *detailUserInfo;
-
+@property (nonatomic, strong) ASUser *user;
 - (void)fillWithPerson:(ASUser *)user;
 @end

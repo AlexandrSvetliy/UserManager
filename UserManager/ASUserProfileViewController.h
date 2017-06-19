@@ -10,10 +10,11 @@
 #import "ASUIButton.h"
 #import "ASStorage.h"
 #import "NSDate+ASDate.h"
+#import "ASUser+CoreDataManagerExtention.h"
 
-static NSString* const ASUsersListSequeID = @"ASUsersListSequeID";
-
+typedef void (^ObjectHandler)(id);
 @interface ASUserProfileViewController : UIViewController
+@property (nonatomic, copy) ObjectHandler saveHandler;
 //- (void)setStorage:(ASStorage *)storage;
 - (void)setCurrentUser:(ASUser*)user;
 @end

@@ -19,12 +19,15 @@
 typedef void (^ObjectHandler)(id);
 //#import "ASStorage.h"
 //#import "ASUser+CoreDataClass.h"
+typedef BOOL (*ASValidationBool)(BOOL);
+typedef NSString* (*ASValidationMessage)(NSString*);
 
-static const CGFloat ASPickerHeight = 245;
-static const CGFloat ASAnimationDuration = 0.4;
+struct ASValidateStruct;
+
 
 @interface ASRegistrationViewController : UIViewController <CountryPickerViewDelegate,BirthdayPickerViewDelegate>
 @property (nonatomic, strong) ASUser *user;
 @property (nonatomic, copy) ObjectHandler saveHandler;
+- (void)fillWithUserDictionary:(NSDictionary*)dictionary;
 //- (NSDictionary *)userDictionary;
 @end
